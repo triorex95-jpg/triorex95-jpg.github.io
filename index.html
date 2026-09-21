@@ -2,28 +2,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Informação clara e baseada em evidências sobre cocaína, seus efeitos, riscos, dependência e busca de ajuda."
-  />
-  <title>COCA | Informação sobre cocaína</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal educativo sobre cocaína, efeitos, riscos, dependência e busca de ajuda.">
+  <title>COCA — Informação e prevenção</title>
 
   <style>
     :root {
-      --bg: #07100d;
-      --bg-2: #0b1814;
-      --card: #10231c;
-      --card-2: #143026;
-      --green: #8ee06b;
-      --green-dark: #3d9b5c;
-      --white: #f4f7f4;
-      --muted: #a8b7ae;
-      --red: #ff6b6b;
-      --yellow: #f4ca64;
-      --line: rgba(255,255,255,.1);
-      --max: 1180px;
+      --bg: #06100c;
+      --bg2: #0a1913;
+      --card: #10241a;
+      --card-hover: #163324;
+      --green: #9bea72;
+      --green2: #56c878;
+      --white: #f5f8f5;
+      --muted: #9dad9f;
+      --red: #ff6868;
+      --yellow: #ffd166;
+      --blue: #72c9ff;
+      --border: rgba(255,255,255,.1);
+      --max: 1200px;
     }
 
     * {
@@ -37,185 +35,243 @@
     }
 
     body {
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 80% 10%, rgba(83, 173, 104, .18), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(86,200,120,.15), transparent 30%),
+        radial-gradient(circle at 10% 60%, rgba(86,200,120,.08), transparent 25%),
         var(--bg);
       color: var(--white);
+      font-family: Inter, Arial, sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     button {
       font: inherit;
     }
 
-    /* NAV */
+    /* =========================
+       NAV
+    ========================= */
 
-    nav {
+    .nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      z-index: 100;
-      backdrop-filter: blur(15px);
-      background: rgba(7,16,13,.78);
-      border-bottom: 1px solid var(--line);
+      z-index: 999;
+      background: rgba(6,16,12,.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
       max-width: var(--max);
       margin: auto;
-      padding: 16px 24px;
+      height: 72px;
+      padding: 0 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      align-items: center;
     }
 
     .logo {
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: .08em;
+      letter-spacing: -.04em;
     }
 
     .logo span {
       color: var(--green);
     }
 
-    .links {
+    .nav-links {
       display: flex;
-      gap: 22px;
+      gap: 25px;
       align-items: center;
     }
 
-    .links a {
+    .nav-links a {
       color: var(--muted);
-      font-size: .92rem;
+      font-size: .9rem;
       transition: .2s;
     }
 
-    .links a:hover {
+    .nav-links a:hover {
       color: var(--green);
     }
 
-    .menu-btn {
+    .menu {
       display: none;
-      border: 0;
-      background: transparent;
+      background: none;
       color: white;
+      border: 0;
       font-size: 1.7rem;
       cursor: pointer;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      position: relative;
-      overflow: hidden;
       padding: 130px 24px 80px;
+      position: relative;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: rgba(82, 181, 105, .13);
-      filter: blur(90px);
-      right: -180px;
-      top: 80px;
-    }
-
-    .hero-content {
+    .hero-container {
+      width: 100%;
       max-width: var(--max);
       margin: auto;
-      width: 100%;
-      position: relative;
-      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      padding: 8px 13px;
-      border: 1px solid rgba(142,224,107,.3);
-      border-radius: 999px;
+    .badge {
+      display: inline-block;
       color: var(--green);
-      font-size: .78rem;
-      font-weight: 700;
+      border: 1px solid rgba(155,234,114,.3);
+      background: rgba(155,234,114,.06);
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: .75rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 24px;
+      letter-spacing: .12em;
+      margin-bottom: 22px;
     }
 
     h1 {
-      max-width: 850px;
-      font-size: clamp(3.3rem, 9vw, 7.8rem);
-      line-height: .9;
-      letter-spacing: -.07em;
-      margin-bottom: 30px;
+      font-size: clamp(4rem, 9vw, 8.5rem);
+      line-height: .84;
+      letter-spacing: -.08em;
+      margin-bottom: 28px;
     }
 
     h1 span {
       color: var(--green);
     }
 
-    .hero p {
-      max-width: 650px;
+    .hero-text {
       color: var(--muted);
+      max-width: 650px;
       font-size: 1.15rem;
-      margin-bottom: 35px;
+      margin-bottom: 32px;
     }
 
-    .hero-actions {
+    .buttons {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
-      padding: 14px 21px;
+      border: 1px solid var(--border);
+      padding: 14px 20px;
       border-radius: 12px;
-      border: 1px solid var(--line);
-      transition: .2s;
       cursor: pointer;
+      transition: .2s;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-weight: 700;
     }
 
-    .btn-primary {
+    .btn-main {
       background: var(--green);
-      color: #07100d;
+      color: #071009;
       border-color: var(--green);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: #a4ed82;
+    .btn-main:hover {
+      transform: translateY(-3px);
+      background: #b0f58e;
     }
 
-    .btn-secondary {
+    .btn-dark {
       background: rgba(255,255,255,.04);
-      color: white;
     }
 
-    .btn-secondary:hover {
+    .btn-dark:hover {
       background: rgba(255,255,255,.08);
     }
 
-    /* SECTIONS */
+    /* molecule */
+
+    .visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .orb {
+      width: 330px;
+      height: 330px;
+      border: 1px solid rgba(155,234,114,.35);
+      border-radius: 50%;
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-shadow:
+        0 0 80px rgba(86,200,120,.13),
+        inset 0 0 60px rgba(86,200,120,.05);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .orb::before,
+    .orb::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(155,234,114,.18);
+      border-radius: 50%;
+    }
+
+    .orb::before {
+      width: 430px;
+      height: 140px;
+      transform: rotate(25deg);
+    }
+
+    .orb::after {
+      width: 140px;
+      height: 430px;
+      transform: rotate(25deg);
+    }
+
+    .orb-core {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(155,234,114,.1);
+      border: 2px solid var(--green);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-size: 2rem;
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* =========================
+       GLOBAL
+    ========================= */
 
     section {
-      padding: 100px 24px;
+      padding: 110px 24px;
     }
 
     .container {
@@ -223,302 +279,388 @@
       margin: auto;
     }
 
-    .section-header {
-      max-width: 760px;
-      margin-bottom: 55px;
-    }
-
-    .section-number {
+    .section-label {
       color: var(--green);
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .15em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      letter-spacing: .15em;
+      font-size: .75rem;
+      font-weight: 900;
+      margin-bottom: 13px;
     }
 
     h2 {
-      font-size: clamp(2.3rem, 5vw, 4.5rem);
-      line-height: 1;
-      letter-spacing: -.045em;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+      max-width: 850px;
+      margin-bottom: 22px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.05rem;
+      margin-bottom: 50px;
+    }
+
+    /* =========================
+       INTERACTIVE CARDS
+    ========================= */
+
+    .interactive-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .interactive-card {
+      min-height: 270px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      cursor: pointer;
+      transition: .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-card:hover {
+      background: var(--card-hover);
+      transform: translateY(-7px);
+      border-color: rgba(155,234,114,.35);
+    }
+
+    .interactive-card.active {
+      border-color: var(--green);
+      background: var(--card-hover);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .interactive-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .interactive-card p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .card-more {
+      position: absolute;
+      bottom: 25px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: .85rem;
+    }
+
+    /* =========================
+       EFFECT EXPLORER
+    ========================= */
+
+    .explorer {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+    }
+
+    .explorer-menu {
+      display: grid;
+      gap: 10px;
+    }
+
+    .explorer-btn {
+      text-align: left;
+      padding: 18px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .explorer-btn:hover,
+    .explorer-btn.selected {
+      border-color: var(--green);
+      background: rgba(155,234,114,.08);
+    }
+
+    .explorer-btn strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .explorer-btn span {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .explorer-display {
+      min-height: 420px;
+      padding: 40px;
+      background:
+        linear-gradient(145deg, rgba(155,234,114,.07), transparent),
+        var(--card);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+    }
+
+    .display-icon {
+      font-size: 3rem;
       margin-bottom: 20px;
     }
 
-    .section-header p {
-      color: var(--muted);
-      font-size: 1.05rem;
+    .explorer-display h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
     }
 
-    /* INTRO */
+    .explorer-display p {
+      color: var(--muted);
+      max-width: 650px;
+    }
 
-    .intro-grid {
+    .info-list {
+      margin-top: 25px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-item {
+      padding: 13px 15px;
+      background: rgba(255,255,255,.04);
+      border-radius: 10px;
+      color: #dbe5dd;
+    }
+
+    /* =========================
+       RISK METER
+    ========================= */
+
+    .risk-area {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 25px;
     }
 
-    .big-card {
-      padding: 40px;
-      background: linear-gradient(145deg, var(--card-2), var(--card));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      min-height: 350px;
+    .risk-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 35px;
     }
 
-    .big-card h3 {
-      font-size: 2rem;
-      margin-bottom: 18px;
-    }
-
-    .big-card p {
-      color: var(--muted);
-    }
-
-    .molecule {
-      height: 200px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-    }
-
-    .molecule-core {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 2px solid var(--green);
-      box-shadow:
-        0 0 30px rgba(142,224,107,.25),
-        inset 0 0 30px rgba(142,224,107,.08);
-      display: grid;
-      place-items: center;
-      color: var(--green);
-      font-weight: 900;
-      font-size: 1.5rem;
+    .risk-meter {
+      height: 14px;
+      border-radius: 20px;
+      background: linear-gradient(
+        90deg,
+        #5acb79,
+        #ffd166,
+        #ff8a65,
+        #ff4d5e
+      );
+      margin: 30px 0 15px;
       position: relative;
     }
 
-    .molecule-core::before,
-    .molecule-core::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(142,224,107,.4);
+    .risk-point {
+      width: 25px;
+      height: 25px;
       border-radius: 50%;
+      background: white;
+      border: 4px solid #08100c;
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%,-50%);
+      transition: .4s;
     }
 
-    .molecule-core::before {
-      width: 180px;
-      height: 65px;
-      transform: rotate(35deg);
-    }
-
-    .molecule-core::after {
-      width: 65px;
-      height: 180px;
-      transform: rotate(35deg);
-    }
-
-    /* CARDS */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 28px;
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(142,224,107,.35);
-    }
-
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(142,224,107,.1);
-      color: var(--green);
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
+    .risk-labels {
+      display: flex;
+      justify-content: space-between;
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .8rem;
     }
 
-    /* EFFECTS */
-
-    .effects {
-      background: #0a1712;
+    .warning {
+      border-color: rgba(255,104,104,.3);
     }
 
-    .effect-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .effect {
-      border-radius: 22px;
-      padding: 32px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.025);
-    }
-
-    .effect h3 {
-      margin-bottom: 12px;
-    }
-
-    .effect ul {
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .effect li {
-      margin: 7px 0;
-    }
-
-    .danger {
-      border-color: rgba(255,107,107,.25);
-    }
-
-    .danger h3 {
+    .warning h3 {
       color: var(--red);
     }
 
-    .attention {
-      border-color: rgba(244,202,100,.25);
+    .warning ul {
+      padding-left: 20px;
+      color: var(--muted);
+      margin-top: 15px;
     }
 
-    .attention h3 {
-      color: var(--yellow);
+    .warning li {
+      margin: 7px 0;
     }
 
-    /* STATS */
+    /* =========================
+       TIMELINE
+    ========================= */
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 30px;
+    .timeline {
+      position: relative;
+      max-width: 900px;
     }
 
-    .stat {
-      padding: 35px;
-      background: var(--card);
-      border-radius: 22px;
-      border: 1px solid var(--line);
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(155,234,114,.2);
     }
 
-    .stat strong {
-      display: block;
-      font-size: 3.4rem;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 12px;
+    .timeline-item {
+      position: relative;
+      padding-left: 55px;
+      margin-bottom: 40px;
     }
 
-    .stat span {
+    .timeline-dot {
+      position: absolute;
+      left: 5px;
+      top: 3px;
+      width: 22px;
+      height: 22px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(155,234,114,.3);
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .timeline-item p {
       color: var(--muted);
     }
 
-    /* QUIZ */
+    /* =========================
+       QUIZ
+    ========================= */
 
     .quiz {
+      max-width: 850px;
       background:
-        linear-gradient(135deg, rgba(142,224,107,.08), transparent),
+        linear-gradient(145deg, rgba(155,234,114,.09), transparent),
         var(--card);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 45px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 40px;
     }
 
-    .question {
-      font-size: 1.7rem;
-      font-weight: 800;
+    .quiz-progress {
+      height: 6px;
+      background: rgba(255,255,255,.08);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 35px;
+    }
+
+    .quiz-progress-bar {
+      width: 33%;
+      height: 100%;
+      background: var(--green);
+      transition: .3s;
+    }
+
+    .quiz-question {
+      font-size: 1.6rem;
+      font-weight: 850;
       margin-bottom: 25px;
     }
 
-    .answers {
+    .quiz-options {
       display: grid;
       gap: 10px;
     }
 
-    .answer {
+    .quiz-option {
+      padding: 17px;
       text-align: left;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: white;
-      padding: 15px;
       border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      color: white;
       cursor: pointer;
       transition: .2s;
     }
 
-    .answer:hover {
-      background: rgba(142,224,107,.1);
-      border-color: rgba(142,224,107,.4);
+    .quiz-option:hover {
+      border-color: var(--green);
+      background: rgba(155,234,114,.07);
     }
 
-    #quiz-result {
-      margin-top: 20px;
-      font-weight: 700;
+    .quiz-result {
+      margin-top: 25px;
       color: var(--green);
+      font-weight: 800;
+      min-height: 25px;
     }
 
-    /* HELP */
+    /* =========================
+       HELP
+    ========================= */
 
     .help {
-      background: var(--green);
-      color: #07100d;
+      background:
+        linear-gradient(135deg, rgba(155,234,114,.95), rgba(86,200,120,.9));
+      color: #07100b;
     }
 
-    .help .section-number {
-      color: #1e6730;
+    .help .section-label {
+      color: #225b31;
     }
 
-    .help p {
-      max-width: 700px;
-      font-size: 1.1rem;
-      margin-bottom: 25px;
+    .help .section-intro {
+      color: #183f24;
     }
 
-    .help-cards {
+    .help-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 15px;
     }
 
     .help-card {
-      padding: 25px;
-      border-radius: 18px;
-      background: rgba(0,0,0,.12);
+      background: rgba(0,0,0,.13);
+      padding: 28px;
+      border-radius: 20px;
     }
 
     .help-card h3 {
       margin-bottom: 8px;
     }
 
-    /* FOOTER */
+    .help-card p {
+      color: #194327;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       padding: 50px 24px;
-      background: #040907;
-      color: var(--muted);
+      background: #030806;
     }
 
     .footer-inner {
@@ -529,64 +671,164 @@
       gap: 30px;
     }
 
-    .sources {
-      margin-top: 15px;
+    .footer-inner p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .footer-links {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .sources a {
+    .footer-links a {
       color: var(--green);
+      font-size: .9rem;
     }
 
-    /* MOBILE */
+    /* =========================
+       MODAL
+    ========================= */
 
-    @media (max-width: 800px) {
-      .links {
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(600px,100%);
+      background: #0d2118;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 35px;
+      position: relative;
+      animation: pop .25s ease;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(.94);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .close {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    .modal-box p {
+      color: var(--muted);
+      margin-top: 15px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:850px) {
+      .nav-links {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 72px;
         left: 0;
         width: 100%;
+        background: #07110d;
         padding: 20px;
-        background: #07100d;
         flex-direction: column;
         align-items: flex-start;
-        border-bottom: 1px solid var(--line);
       }
 
-      .links.open {
+      .nav-links.open {
         display: flex;
       }
 
-      .menu-btn {
+      .menu {
         display: block;
       }
 
-      .intro-grid,
-      .effect-grid,
-      .cards,
-      .stats,
-      .help-cards {
+      .hero-container,
+      .risk-area,
+      .explorer {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 75px 20px;
+      .visual {
+        order: -1;
       }
 
-      .big-card,
-      .quiz {
-        padding: 28px;
+      .orb {
+        width: 250px;
+        height: 250px;
+      }
+
+      .orb::before {
+        width: 320px;
+      }
+
+      .orb::after {
+        height: 320px;
+      }
+
+      .interactive-grid,
+      .help-grid {
+        grid-template-columns: 1fr;
       }
 
       h1 {
-        font-size: 4rem;
+        font-size: 4.8rem;
+      }
+
+      section {
+        padding: 80px 20px;
       }
 
       .footer-inner {
         flex-direction: column;
+      }
+    }
+
+    @media(max-width:480px) {
+      h1 {
+        font-size: 3.8rem;
+      }
+
+      .orb {
+        width: 210px;
+        height: 210px;
+      }
+
+      .orb-core {
+        width: 90px;
+        height: 90px;
+      }
+
+      .quiz,
+      .explorer-display,
+      .risk-box {
+        padding: 25px;
       }
     }
   </style>
@@ -595,145 +837,183 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav class="nav">
     <div class="nav-inner">
-      <a href="#inicio" class="logo">COCA<span>.</span></a>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
+      <a class="logo" href="#inicio">
+        COCA<span>.</span>
+      </a>
+
+      <button class="menu" id="menuBtn" aria-label="Abrir menu">
         ☰
       </button>
 
-      <div class="links" id="navLinks">
-        <a href="#o-que-e">O que é</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#sobre">Sobre</a>
         <a href="#efeitos">Efeitos</a>
         <a href="#riscos">Riscos</a>
         <a href="#dependencia">Dependência</a>
+        <a href="#quiz">Quiz</a>
         <a href="#ajuda">Ajuda</a>
       </div>
+
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="inicio">
-    <div class="hero-content">
-      <div class="eyebrow">Informação baseada em evidências</div>
+    <div class="hero-container">
 
-      <h1>
-        Entenda a<br>
-        <span>cocaína.</span>
-      </h1>
+      <div>
+        <div class="badge">
+          Informação baseada em evidências
+        </div>
 
-      <p>
-        Um guia digital para entender o que é a cocaína, como ela afeta
-        o organismo, quais são os riscos e onde procurar ajuda.
-      </p>
+        <h1>
+          Entenda<br>
+          <span>cocaína.</span>
+        </h1>
 
-      <div class="hero-actions">
-        <a href="#o-que-e" class="btn btn-primary">
-          Começar a explorar ↓
-        </a>
+        <p class="hero-text">
+          Explore informações sobre efeitos, riscos, dependência,
+          saúde e formas de procurar ajuda.
+        </p>
 
-        <a href="#ajuda" class="btn btn-secondary">
-          Preciso de ajuda
-        </a>
+        <div class="buttons">
+          <a class="btn btn-main" href="#sobre">
+            Explorar ↓
+          </a>
+
+          <a class="btn btn-dark" href="#ajuda">
+            Preciso de ajuda
+          </a>
+        </div>
       </div>
+
+      <div class="visual">
+        <div class="orb">
+          <div class="orb-core">
+            C
+          </div>
+        </div>
+      </div>
+
     </div>
   </header>
 
-  <!-- O QUE É -->
-  <section id="o-que-e">
+  <!-- SOBRE -->
+  <section id="sobre">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">01 — O que é?</div>
-        <h2>Uma substância que atua diretamente no cérebro.</h2>
-        <p>
-          A cocaína é um estimulante do sistema nervoso central. Seu uso
-          pode produzir efeitos intensos e também está associado a riscos
-          importantes para a saúde.
-        </p>
-      </div>
+      <div class="section-label">01 — Sobre</div>
 
-      <div class="intro-grid">
+      <h2>
+        Conhecimento antes de qualquer decisão.
+      </h2>
 
-        <article class="big-card">
-          <div class="molecule">
-            <div class="molecule-core">C</div>
-          </div>
+      <p class="section-intro">
+        A cocaína é uma droga estimulante que atua no sistema nervoso
+        central. Conhecer seus efeitos e riscos pode ajudar a reconhecer
+        situações que exigem atenção.
+      </p>
 
-          <h3>Cocaína</h3>
+      <div class="interactive-grid">
 
+        <article class="interactive-card" data-modal="what">
+          <div class="card-icon">🧠</div>
+          <h3>O que é?</h3>
           <p>
-            A substância altera a atividade de neurotransmissores no cérebro,
-            produzindo mudanças temporárias no estado de alerta, energia,
-            humor e percepção.
+            Entenda de forma simples o que é a cocaína e como ela atua.
           </p>
+          <div class="card-more">Clique para saber mais →</div>
         </article>
 
-        <article class="big-card">
-          <h3>Por que conhecer?</h3>
-
+        <article class="interactive-card" data-modal="brain">
+          <div class="card-icon">⚡</div>
+          <h3>Sistema nervoso</h3>
           <p>
-            Informação confiável ajuda a reconhecer riscos, identificar sinais
-            de uso problemático e procurar atendimento quando necessário.
+            Descubra como uma substância estimulante pode alterar o
+            funcionamento do organismo.
           </p>
+          <div class="card-more">Explorar →</div>
+        </article>
 
-          <br>
-
+        <article class="interactive-card" data-modal="variation">
+          <div class="card-icon">🔎</div>
+          <h3>Cada pessoa é diferente</h3>
           <p>
-            Transtornos relacionados ao uso de drogas podem afetar a saúde,
-            relações pessoais, trabalho e outros aspectos da vida.
+            Os efeitos podem variar conforme pessoa, contexto e outras
+            condições de saúde.
           </p>
+          <div class="card-more">Ver detalhes →</div>
         </article>
 
       </div>
+
     </div>
   </section>
 
   <!-- EFEITOS -->
-  <section class="effects" id="efeitos">
+  <section id="efeitos">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">02 — Efeitos</div>
-        <h2>O que pode acontecer no organismo?</h2>
-        <p>
-          Os efeitos variam entre pessoas e situações. Alguns podem aparecer
-          rapidamente e outros podem surgir ou se intensificar com o uso
-          repetido.
-        </p>
+      <div class="section-label">02 — Explorador</div>
+
+      <h2>
+        Explore os possíveis efeitos.
+      </h2>
+
+      <p class="section-intro">
+        Selecione uma categoria para visualizar informações diferentes.
+      </p>
+
+      <div class="explorer">
+
+        <div class="explorer-menu">
+
+          <button class="explorer-btn selected" data-effect="short">
+            <strong>Curto prazo</strong>
+            <span>O que pode acontecer durante ou logo após o uso</span>
+          </button>
+
+          <button class="explorer-btn" data-effect="body">
+            <strong>Corpo</strong>
+            <span>Alterações físicas e cardiovasculares</span>
+          </button>
+
+          <button class="explorer-btn" data-effect="mind">
+            <strong>Mente</strong>
+            <span>Humor, ansiedade e percepção</span>
+          </button>
+
+          <button class="explorer-btn" data-effect="long">
+            <strong>Uso repetido</strong>
+            <span>Possíveis consequências ao longo do tempo</span>
+          </button>
+
+        </div>
+
+        <div class="explorer-display" id="effectDisplay">
+          <div class="display-icon">⚡</div>
+
+          <h3>Efeitos de curto prazo</h3>
+
+          <p>
+            A cocaína pode produzir estimulação intensa e alterações
+            temporárias no estado de alerta, energia, humor e atividade
+            cardiovascular.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">Aumento da frequência cardíaca</div>
+            <div class="info-item">Agitação ou ansiedade</div>
+            <div class="info-item">Alterações de pressão arterial</div>
+            <div class="info-item">Alterações de percepção e comportamento</div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="cards">
-
-        <article class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Estimulação</h3>
-          <p>
-            Pode ocorrer aumento temporário de alerta, energia e atividade,
-            acompanhado de alterações no ritmo cardíaco.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">🧠</div>
-          <h3>Humor e percepção</h3>
-          <p>
-            Ansiedade, agitação, paranoia e alterações importantes de humor
-            podem ocorrer.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">❤️</div>
-          <h3>Sistema cardiovascular</h3>
-          <p>
-            A cocaína pode aumentar a pressão e a frequência cardíaca e está
-            associada a eventos cardiovasculares graves.
-          </p>
-        </article>
-
-      </div>
     </div>
   </section>
 
@@ -741,126 +1021,158 @@
   <section id="riscos">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">03 — Riscos</div>
-        <h2>Alguns riscos podem ser graves.</h2>
-        <p>
-          Os problemas relacionados à cocaína não dependem apenas da frequência
-          de uso. Reações adversas importantes podem acontecer de forma
-          imprevisível.
-        </p>
-      </div>
+      <div class="section-label">03 — Riscos</div>
 
-      <div class="effect-grid">
+      <h2>
+        Nem todos os riscos são visíveis.
+      </h2>
 
-        <article class="effect attention">
-          <h3>⚠️ Sinais de alerta</h3>
-          <ul>
-            <li>Ansiedade ou agitação intensa</li>
-            <li>Confusão ou paranoia</li>
-            <li>Batimentos cardíacos muito acelerados</li>
-            <li>Temperatura corporal elevada</li>
-            <li>Convulsões</li>
-          </ul>
-        </article>
+      <p class="section-intro">
+        Algumas complicações podem ser graves e exigem atendimento médico.
+      </p>
 
-        <article class="effect danger">
-          <h3>🚨 Emergência</h3>
+      <div class="risk-area">
+
+        <div class="risk-box">
+          <h3>Risco e contexto</h3>
+
+          <p style="color:var(--muted);margin-top:10px">
+            O risco não pode ser reduzido a uma única medida. Diferentes
+            fatores podem mudar a resposta do organismo.
+          </p>
+
+          <div class="risk-meter">
+            <div class="risk-point" id="riskPoint"></div>
+          </div>
+
+          <div class="risk-labels">
+            <span>Menor</span>
+            <span>Maior</span>
+          </div>
+
+          <button class="btn btn-main" id="riskBtn" style="margin-top:25px">
+            Mostrar outro cenário
+          </button>
+        </div>
+
+        <div class="risk-box warning">
+          <h3>🚨 Procure emergência</h3>
+
           <ul>
             <li>Dor ou pressão no peito</li>
             <li>Dificuldade para respirar</li>
-            <li>Perda de consciência</li>
             <li>Convulsão</li>
-            <li>Sintomas neurológicos súbitos</li>
+            <li>Perda de consciência</li>
+            <li>Confusão intensa ou sintomas neurológicos súbitos</li>
           </ul>
 
-          <br>
-
-          <strong>
-            Em uma situação de emergência, procure imediatamente o serviço
-            de emergência da sua região.
-          </strong>
-        </article>
+          <p style="margin-top:20px;color:var(--muted)">
+            Em uma emergência, procure imediatamente o serviço de emergência
+            da sua região.
+          </p>
+        </div>
 
       </div>
+
     </div>
   </section>
 
   <!-- DEPENDÊNCIA -->
-  <section id="dependencia" class="effects">
+  <section id="dependencia">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">04 — Dependência</div>
-        <h2>Uso problemático não é falta de caráter.</h2>
-        <p>
-          Transtornos relacionados ao uso de drogas são condições de saúde.
-          Tratamento e apoio podem ajudar.
-        </p>
+      <div class="section-label">04 — Dependência</div>
+
+      <h2>
+        Entender a dependência também é entender saúde.
+      </h2>
+
+      <p class="section-intro">
+        Um transtorno relacionado ao uso de substâncias pode afetar
+        diferentes áreas da vida e pode ser tratado.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <h3>Uso</h3>
+
+          <p>
+            A exposição à substância pode produzir efeitos no cérebro
+            e no organismo.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <h3>Repetição</h3>
+
+          <p>
+            Algumas pessoas passam a apresentar dificuldade para controlar
+            o uso apesar das consequências.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <h3>Impactos</h3>
+
+          <p>
+            Problemas podem aparecer na saúde, relacionamentos, estudos,
+            trabalho ou outras áreas.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <h3>Busca por tratamento</h3>
+
+          <p>
+            Profissionais e serviços especializados podem oferecer avaliação,
+            acompanhamento e tratamento.
+          </p>
+        </div>
+
       </div>
 
-      <div class="cards">
-
-        <article class="card">
-          <div class="card-icon">🔄</div>
-          <h3>Uso repetitivo</h3>
-          <p>
-            A pessoa pode sentir dificuldade para reduzir ou interromper o uso
-            mesmo percebendo consequências negativas.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">📉</div>
-          <h3>Impacto na vida</h3>
-          <p>
-            Problemas podem aparecer nos relacionamentos, estudos, trabalho,
-            finanças e saúde.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">🤝</div>
-          <h3>Tratamento</h3>
-          <p>
-            Intervenções psicossociais, incluindo terapia cognitivo-comportamental
-            e manejo de contingências, são opções recomendadas para transtornos
-            relacionados a estimulantes.
-          </p>
-        </article>
-
-      </div>
     </div>
   </section>
 
   <!-- QUIZ -->
-  <section>
+  <section id="quiz">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">05 — Teste seus conhecimentos</div>
-        <h2>Mito ou realidade?</h2>
-      </div>
+      <div class="section-label">05 — Quiz</div>
+
+      <h2>
+        Quanto você sabe?
+      </h2>
+
+      <p class="section-intro">
+        Responda às perguntas e veja sua pontuação.
+      </p>
 
       <div class="quiz">
 
-        <div class="question">
-          A cocaína pode causar problemas cardiovasculares graves?
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="progress"></div>
         </div>
 
-        <div class="answers">
-          <button class="answer" onclick="answer(true)">
-            Sim
-          </button>
-
-          <button class="answer" onclick="answer(false)">
-            Não
-          </button>
+        <div class="quiz-question" id="question">
+          A cocaína pode afetar o sistema cardiovascular?
         </div>
 
-        <div id="quiz-result"></div>
+        <div class="quiz-options" id="options"></div>
+
+        <div class="quiz-result" id="quizResult"></div>
 
       </div>
+
     </div>
   </section>
 
@@ -868,41 +1180,43 @@
   <section class="help" id="ajuda">
     <div class="container">
 
-      <div class="section-header">
-        <div class="section-number">06 — Procure ajuda</div>
+      <div class="section-label">06 — Ajuda</div>
 
-        <h2>Você não precisa lidar com isso sozinho.</h2>
+      <h2>
+        Procurar ajuda é um passo.
+      </h2>
 
-        <p>
-          Se você ou alguém próximo está tendo problemas relacionados ao uso
-          de cocaína, procure um serviço de saúde ou profissional qualificado.
-          Em uma emergência, procure atendimento imediatamente.
-        </p>
-      </div>
+      <p class="section-intro">
+        Se você ou alguém próximo está enfrentando problemas relacionados
+        ao uso de cocaína, procure um profissional ou serviço de saúde.
+      </p>
 
-      <div class="help-cards">
+      <div class="help-grid">
 
         <article class="help-card">
           <h3>🏥 Serviço de saúde</h3>
+
           <p>
-            Procure uma unidade de saúde, serviço especializado em álcool e
-            outras drogas ou profissional de saúde.
+            Procure uma unidade de saúde ou serviço especializado em
+            álcool e outras drogas.
           </p>
         </article>
 
         <article class="help-card">
           <h3>🚑 Emergência</h3>
+
           <p>
-            Em caso de perda de consciência, convulsão, dificuldade respiratória
-            ou dor no peito, procure atendimento emergencial.
+            Em uma situação potencialmente grave, procure imediatamente
+            atendimento emergencial.
           </p>
         </article>
 
         <article class="help-card">
           <h3>🤝 Apoio</h3>
+
           <p>
-            Conversar com alguém de confiança pode ser um primeiro passo para
-            buscar suporte.
+            Conversar com uma pessoa de confiança pode ser um primeiro
+            passo para buscar suporte.
           </p>
         </article>
 
@@ -917,39 +1231,58 @@
 
       <div>
         <div class="logo">COCA<span>.</span></div>
-
-        <p style="margin-top:10px">
-          Informação, prevenção e saúde.
-        </p>
+        <p>Informação • Prevenção • Saúde</p>
       </div>
 
-      <div>
-        <strong>Fontes</strong>
+      <div class="footer-links">
+        <a
+          href="https://www.who.int/health-topics/drugs-psychoactive"
+          target="_blank"
+          rel="noopener"
+        >
+          OMS
+        </a>
 
-        <div class="sources">
-          <a
-            href="https://www.who.int/health-topics/drugs-psychoactive"
-            target="_blank"
-            rel="noopener"
-          >
-            Organização Mundial da Saúde
-          </a>
-
-          <a
-            href="https://www.who.int/teams/mental-health-and-substance-use"
-            target="_blank"
-            rel="noopener"
-          >
-            Saúde mental e uso de substâncias
-          </a>
-        </div>
+        <a
+          href="https://www.gov.br/saude/pt-br"
+          target="_blank"
+          rel="noopener"
+        >
+          Ministério da Saúde
+        </a>
       </div>
 
     </div>
   </footer>
 
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+
+    <div class="modal-box">
+
+      <button class="close" id="closeModal" aria-label="Fechar">
+        ×
+      </button>
+
+      <div class="display-icon" id="modalIcon">🧠</div>
+
+      <h2 id="modalTitle" style="font-size:2.2rem">
+        Título
+      </h2>
+
+      <p id="modalText">
+        Texto.
+      </p>
+
+    </div>
+
+  </div>
+
   <script>
-    // Menu mobile
+    /* =========================================
+       MENU
+    ========================================= */
+
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
@@ -957,25 +1290,328 @@
       navLinks.classList.toggle("open");
     });
 
-    // Fecha menu ao clicar em um link
-    document.querySelectorAll("#navLinks a").forEach(link => {
+    document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
       });
     });
 
-    // Quiz
-    function answer(correct) {
-      const result = document.getElementById("quiz-result");
 
-      if (correct) {
-        result.textContent =
-          "✓ Correto. A cocaína está associada a riscos cardiovasculares importantes.";
-      } else {
-        result.textContent =
-          "✗ Incorreto. A cocaína pode estar associada a problemas cardiovasculares graves.";
+    /* =========================================
+       MODAIS DOS CARDS
+    ========================================= */
+
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const modalIcon = document.getElementById("modalIcon");
+
+    const modalData = {
+      what: {
+        icon: "🧠",
+        title: "O que é cocaína?",
+        text:
+          "A cocaína é uma substância estimulante do sistema nervoso central. Ela pode alterar temporariamente o estado de alerta, energia, humor e atividade cardiovascular."
+      },
+
+      brain: {
+        icon: "⚡",
+        title: "O cérebro",
+        text:
+          "A cocaína interfere em sistemas de neurotransmissores do cérebro. Essas alterações estão relacionadas aos efeitos estimulantes e também podem contribuir para padrões de uso problemático."
+      },
+
+      variation: {
+        icon: "🔎",
+        title: "Os efeitos variam",
+        text:
+          "A resposta pode variar conforme características individuais, quantidade e contexto do uso, outras substâncias envolvidas e condições de saúde. Por isso, não existe uma experiência universal."
       }
+    };
+
+    document.querySelectorAll("[data-modal]").forEach(card => {
+
+      card.addEventListener("click", () => {
+
+        const data = modalData[card.dataset.modal];
+
+        if (!data) return;
+
+        modalIcon.textContent = data.icon;
+        modalTitle.textContent = data.title;
+        modalText.textContent = data.text;
+
+        modal.classList.add("open");
+      });
+
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("open");
+    });
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) {
+        modal.classList.remove("open");
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        modal.classList.remove("open");
+      }
+    });
+
+
+    /* =========================================
+       EXPLORADOR DE EFEITOS
+    ========================================= */
+
+    const effects = {
+
+      short: {
+        icon: "⚡",
+        title: "Efeitos de curto prazo",
+        description:
+          "A cocaína pode produzir estimulação intensa e alterações temporárias no estado de alerta, energia, humor e atividade cardiovascular.",
+        items: [
+          "Aumento da frequência cardíaca",
+          "Agitação ou ansiedade",
+          "Alterações da pressão arterial",
+          "Alterações de comportamento e percepção"
+        ]
+      },
+
+      body: {
+        icon: "❤️",
+        title: "Efeitos no corpo",
+        description:
+          "O sistema cardiovascular pode ser afetado durante o uso, e algumas complicações podem ser graves.",
+        items: [
+          "Aumento da frequência cardíaca",
+          "Elevação da pressão arterial",
+          "Alterações do ritmo cardíaco",
+          "Maior risco de eventos cardiovasculares"
+        ]
+      },
+
+      mind: {
+        icon: "🧠",
+        title: "Efeitos na mente",
+        description:
+          "A substância pode alterar humor, percepção e comportamento.",
+        items: [
+          "Ansiedade",
+          "Agitação",
+          "Paranoia",
+          "Alterações importantes de humor"
+        ]
+      },
+
+      long: {
+        icon: "🔄",
+        title: "Uso repetido",
+        description:
+          "O uso repetido pode estar associado ao desenvolvimento de um transtorno relacionado ao uso de cocaína e a outros problemas de saúde.",
+        items: [
+          "Dificuldade de controlar o uso",
+          "Impactos nos relacionamentos",
+          "Problemas no trabalho ou estudos",
+          "Necessidade de tratamento e acompanhamento"
+        ]
+      }
+
+    };
+
+    const effectButtons =
+      document.querySelectorAll(".explorer-btn");
+
+    const display =
+      document.getElementById("effectDisplay");
+
+    function showEffect(type) {
+
+      const data = effects[type];
+
+      if (!data) return;
+
+      effectButtons.forEach(button => {
+        button.classList.toggle(
+          "selected",
+          button.dataset.effect === type
+        );
+      });
+
+      display.innerHTML = `
+        <div class="display-icon">${data.icon}</div>
+
+        <h3>${data.title}</h3>
+
+        <p>${data.description}</p>
+
+        <div class="info-list">
+          ${data.items.map(item =>
+            `<div class="info-item">${item}</div>`
+          ).join("")}
+        </div>
+      `;
     }
+
+    effectButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+        showEffect(button.dataset.effect);
+      });
+
+    });
+
+
+    /* =========================================
+       RISK INTERACTION
+    ========================================= */
+
+    const riskPoint = document.getElementById("riskPoint");
+    const riskBtn = document.getElementById("riskBtn");
+
+    const positions = [25, 45, 65, 82];
+
+    let riskIndex = 2;
+
+    riskBtn.addEventListener("click", () => {
+
+      riskIndex++;
+
+      if (riskIndex >= positions.length) {
+        riskIndex = 0;
+      }
+
+      riskPoint.style.left = positions[riskIndex] + "%";
+
+    });
+
+
+    /* =========================================
+       QUIZ
+    ========================================= */
+
+    const quiz = [
+      {
+        question:
+          "A cocaína pode afetar o sistema cardiovascular?",
+
+        options: [
+          "Sim",
+          "Não"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+          "Os efeitos da cocaína são exatamente iguais para todas as pessoas?",
+
+        options: [
+          "Sim",
+          "Não"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+          "Um transtorno relacionado ao uso de substâncias pode receber tratamento?",
+
+        options: [
+          "Sim",
+          "Não"
+        ],
+
+        correct: 0
+      }
+    ];
+
+    let quizIndex = 0;
+    let score = 0;
+
+    const questionElement =
+      document.getElementById("question");
+
+    const optionsElement =
+      document.getElementById("options");
+
+    const resultElement =
+      document.getElementById("quizResult");
+
+    const progress =
+      document.getElementById("progress");
+
+    function renderQuiz() {
+
+      if (quizIndex >= quiz.length) {
+
+        questionElement.textContent =
+          "Quiz concluído!";
+
+        optionsElement.innerHTML = "";
+
+        resultElement.textContent =
+          `Você acertou ${score} de ${quiz.length} perguntas.`;
+
+        progress.style.width = "100%";
+
+        return;
+      }
+
+      const current = quiz[quizIndex];
+
+      questionElement.textContent =
+        current.question;
+
+      progress.style.width =
+        ((quizIndex + 1) / quiz.length * 100) + "%";
+
+      optionsElement.innerHTML = "";
+
+      current.options.forEach((option, index) => {
+
+        const button =
+          document.createElement("button");
+
+        button.className = "quiz-option";
+        button.textContent = option;
+
+        button.addEventListener("click", () => {
+
+          if (index === current.correct) {
+            score++;
+            resultElement.textContent =
+              "✓ Resposta correta.";
+          } else {
+            resultElement.textContent =
+              "Resposta incorreta. Confira as informações acima.";
+          }
+
+          setTimeout(() => {
+
+            quizIndex++;
+
+            resultElement.textContent = "";
+
+            renderQuiz();
+
+          }, 900);
+
+        });
+
+        optionsElement.appendChild(button);
+
+      });
+    }
+
+    renderQuiz();
   </script>
 
 </body>
